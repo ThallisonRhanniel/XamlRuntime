@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamlRuntime.Views.MainPage"
+             Title="{Binding Title}">
+
+    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+        <Label Text="Welcome Thallison" HorizontalOptions="Center" />
+        <Button Text="Carregar Ex: 1 "   Command="{ Binding OpenNewSimplePageCommand }" HorizontalOptions="Fill" VerticalOptions="Center"></Button>
+        <Button Text="Carregar Ex: 2 "   Command="{ Binding OpenNewPageCommand }" HorizontalOptions="Fill" VerticalOptions="Center"></Button>
+        <Button Text="Carregar Ex: 3 "   Command="{ Binding OpenNewPage2Command }" HorizontalOptions="Fill" VerticalOptions="Center"></Button>
+    </StackLayout>
+
+</ContentPage>
