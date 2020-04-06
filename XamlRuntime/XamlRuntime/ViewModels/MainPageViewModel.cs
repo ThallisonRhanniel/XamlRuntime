@@ -21,6 +21,8 @@ namespace XamlRuntime.ViewModels
 
         public DelegateCommand OpenNewPage2Command { get; private set; }
 
+        public DelegateCommand OpenFinalPageCommand { get; private set; }
+
         public MainPageViewModel(INavigationService navigationService)
             : base(navigationService)
         {
@@ -70,6 +72,81 @@ namespace XamlRuntime.ViewModels
 
 
                 await Prism.PrismApplicationBase.Current.MainPage.Navigation.PushAsync(page);
+            });
+
+            OpenFinalPageCommand = new DelegateCommand(async () =>
+            {
+                string xaml = $"{RuntimePage.Header}" +
+                              $"{RuntimePage.Footer}";
+
+                ContentPage page = new ContentPage().LoadFromXaml(xaml);
+
+                StackLayout StackLayoutRoot = page.FindByName<StackLayout>("StackLayout1");
+
+                var firstImage = new Image()
+                {
+                    HorizontalOptions = LayoutOptions.Center,
+                    VerticalOptions = LayoutOptions.Center,
+                    Margin = new Thickness(0,20,0,20),
+                    WidthRequest = 200,
+                    HeightRequest = 200,
+                    Source = "http://loremflickr.com/200/200/nature?filename=simple.jpg"
+                };
+
+                #region StackLayout Horizonal
+
+                StackLayout stackLayout = new StackLayout()
+                {
+                    VerticalOptions = LayoutOptions.Fill,
+                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                    Orientation = StackOrientation.Horizontal
+                };
+
+                var leftCachedImage = new Image()
+                {
+                    VerticalOptions = LayoutOptions.CenterAndExpand,
+                    HorizontalOptions = LayoutOptions.CenterAndExpand,
+                    WidthRequest = 200,
+                    HeightRequest = 200,
+                    Source = "http://loremflickr.com/200/200/nature?filename=simple.jpg"
+                };
+
+                var rightCachedImage = new Image()
+                {
+                    VerticalOptions = LayoutOptions.CenterAndExpand,
+                    HorizontalOptions = LayoutOptions.CenterAndExpand,
+                    WidthRequest = 200,
+                    HeightRequest = 200,
+                    Source = "http://loremflickr.com/200/200/nature?filename=simple.jpg"
+                };
+
+
+                //Label lbl1 = new Label()
+                //{
+                //    Text = "Thallison",
+                //    BackgroundColor = Xamarin.Forms.Color.Red,
+                //    VerticalOptions = LayoutOptions.CenterAndExpand,
+                //    HorizontalOptions = LayoutOptions.CenterAndExpand
+                //};
+
+                //Label lbl2 = new Label()
+                //{
+                //    Text = "Thallison",
+                //    BackgroundColor = Xamarin.Forms.Color.RoyalBlue,
+                //    VerticalOptions = LayoutOptions.CenterAndExpand,
+                //    HorizontalOptions = LayoutOptions.CenterAndExpand
+                //};
+                stackLayout.Children.Add(leftCachedImage);
+                stackLayout.Children.Add(rightCachedImage);
+
+                #endregion
+                
+                StackLayoutRoot.Children.Add(firstImage);
+
+                StackLayoutRoot.Children.Add(stackLayout);
+
+                await Prism.PrismApplicationBase.Current.MainPage.Navigation.PushAsync(page);
+
             });
         }
     }

@@ -9,6 +9,7 @@
         <Button Text="Carregar Ex: 1 "   Command="{ Binding OpenNewSimplePageCommand }" HorizontalOptions="Fill" VerticalOptions="Center"></Button>
         <Button Text="Carregar Ex: 2 "   Command="{ Binding OpenNewPageCommand }" HorizontalOptions="Fill" VerticalOptions="Center"></Button>
         <Button Text="Carregar Ex: 3 "   Command="{ Binding OpenNewPage2Command }" HorizontalOptions="Fill" VerticalOptions="Center"></Button>
+        <Button Text="Carregar Ex: 4 "   Command="{ Binding OpenFinalPageCommand }" HorizontalOptions="Fill" VerticalOptions="Center"></Button>
     </StackLayout>
 
 </ContentPage>
